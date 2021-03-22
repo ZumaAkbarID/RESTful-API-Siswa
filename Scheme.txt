@@ -1,3 +1,0 @@
-RESTful API
-
-User bayar/register untuk mendapatkan API, nanti API tersebut dapat digunakan untuk banyak kebutuhan, contoh API youtube buat download youtube

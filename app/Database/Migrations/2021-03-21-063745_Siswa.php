@@ -54,8 +54,17 @@ class Siswa extends Migration
 				'type' => 'INT',
 				'constraint' => 15,
 			],
+			'urlfoto' => [
+				'type' => 'VARCHAR',
+				'constraint' => 100,
+			],
+			'sedangsekolah' => [
+				'type' => 'INT',
+				'constraint' => 1,
+				'default' => 1,
+			],
 			'created_date' => [
-				'type' => 'DATETIME',
+				'type' => 'DATE',
 			],
 			'created_by' => [
 				'type' => 'VARCHAR',
@@ -63,7 +72,7 @@ class Siswa extends Migration
 				'default' => 'Administrator',
 			],
 			'updated_date' => [
-				'type' => 'DATETIME',
+				'type' => 'DATE',
 				'null' => true,
 			],
 			'updated_by' => [

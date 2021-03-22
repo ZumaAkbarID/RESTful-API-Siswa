@@ -43,37 +43,86 @@ class Validation
 
 	public $create = [
 		'nama' => [
-			'rules' => 'required'
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'Nama siswa harus diisi'
+			]
 		],
 		'nis' => [
-			'rules' => 'required|is_unique[siswa.nis]|is_natural'
+			'rules' => 'required|is_unique[siswa.nis]|is_natural',
+			'errors' => [
+				'required' => 'NIS harus diisi',
+				'is_unique' => 'Tidak diizinkan terdapat data {field} yang sama',
+				'is_natural' => 'NIS harus berisi angka dan bernilai positif'
+			]
 		],
 		'kelas' => [
-			'rules' => 'required'
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'Kelas siswa harus diisi'
+			]
 		],
 		'tahun_masuk' => [
-			'rules' => 'required'
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'Tahun Masuk siswa harus diisi'
+			]
 		],
 		'ttl' => [
-			'rules' => 'required'
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'Tempat, tanggal lahir siswa harus diisi'
+			]
 		],
 		'alamat' => [
-			'rules' => 'required'
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'Alamat siswa harus diisi'
+			]
 		],
 		'agama' => [
-			'rules' => 'required'
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'Agama siswa harus diisi'
+			]
 		],
 		'sekolah_asal' => [
-			'rules' => 'required'
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'Sekolah asal siswa harus diisi'
+			]
 		],
 		'ibu' => [
-			'rules' => 'required'
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'Nama ibu atau wali siswa harus diisi'
+			]
 		],
 		'ayah' => [
-			'rules' => 'required'
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'Nama ayah atau wali siswa harus diisi'
+			]
 		],
 		'hp_wali' => [
-			'rules' => 'is_natural'
+			'rules' => 'is_natural',
+			'errors' => [
+				'is_natural' => 'Nomor HP wali siswa harus berisi angka dan bernilai positif'
+			]
+		],
+		'sedangsekolah' => [
+			'rules' => 'required|max_length[1]|is_natural',
+			'errors' => [
+				'required' => 'Status siswa harus diisi',
+				'max_length' => 'Status siswa harus terdiri 1 angka antara 0 sampai 2',
+				'is_natural' => 'Status siswa harus berisi angka dan bernilai positif'
+			]
+		],
+		'urlfoto' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'URL foto siswa harus diisi'
+			]
 		],
 	];
 

@@ -6,9 +6,9 @@ use CodeIgniter\RESTful\ResourceController;
 // use CodeIgniter\API\ResponseTrait;
 // use App\Models\UsersModel;
 
-class Users extends ResourceController
+class Datasiswa extends ResourceController
 {
-    protected $modelName = 'App\Models\UsersModel';
+    protected $modelName = 'App\Models\DatasiswaModel';
     protected $format    = 'json';
 
     public function __construct()
@@ -27,20 +27,20 @@ class Users extends ResourceController
     public function create()
     {
         $data =  $this->request->getPost();
-        $validate = $this->validation->run($data, 'register');
+        $validate = $this->validation->run($data, 'create');
         $errors = $this->validation->getErrors();
 
         if ($errors) {
             return $this->fail($errors);
         }
 
-        $user = new \App\Entities\Users();
-        $user->fill($data);
-        $user->created_by = 0;
-        $user->created_date = date('Y-m-d H:i:s');
+        $siswa = new \App\Entities\Datasiswa();
+        $siswa->fill($data);
+        // $siswa->created_by = 'Administrator';
+        $siswa->created_date = date('Y-m-d');
 
-        if ($this->model->save($user)) {
-            return $this->respondCreated($user, 'user created');
+        if ($this->model->save($siswa)) {
+            return $this->respondCreated($siswa, 'Siswa created');
         }
     }
 
@@ -48,24 +48,24 @@ class Users extends ResourceController
     {
         $data = $this->request->getRawInput();
         $data['id'] = $id;
-        $validate = $this->validation->run($data, 'update_user');
-        $errors = $this->validation->getErrors();
+        // $validate = $this->validation->run($data, 'update_siswa');
+        // $errors = $this->validation->getErrors();
 
-        if ($errors) {
-            return $this->fail($errors);
-        }
+        // if ($errors) {
+        //     return $this->fail($errors);
+        // }
 
         if (!$this->model->findById($id)) {
             return $this->fail('Id not found');
         }
 
-        $user = new \App\Entities\Users();
-        $user->fill($data);
-        $user->updated_by = 0;
-        $user->updated_date = date('Y-m-d H:i:s');
+        $siswa = new \App\Entities\Datasiswa();
+        $siswa->fill($data);
+        // $siswa->updated_by = 'Administrator';
+        $siswa->updated_date = date('Y-m-d');
 
-        if ($this->model->save($user)) {
-            return $this->respondUpdated($user, 'user updated');
+        if ($this->model->save($siswa)) {
+            return $this->respondUpdated($siswa, 'Siswa updated');
         }
     }
 

@@ -4,7 +4,7 @@ namespace App\Entities;
 
 use CodeIgniter\Entity;
 
-class Siswa extends Entity
+class Datasiswa extends Entity
 {
     // public function setPassword(string $pass)
     // {

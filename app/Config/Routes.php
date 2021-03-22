@@ -32,7 +32,19 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->resource('siswa');
+$routes->get('/siswa', 'Siswa::index');
+$routes->get('/siswa/(:num)', 'Siswa::detailSiswa/$1');
+
+$routes->group('admin', function ($routes) {
+	$routes->get('siswa', 'Admin\AdminSiswa::index');
+	$routes->get('siswa/(:num)/detail', 'Admin\AdminSiswa::detail/$1');
+	$routes->add('siswa/new', 'Admin\AdminSiswa::create');
+	$routes->add('siswa/save', 'Admin\AdminSiswa::saveCreate');
+	$routes->add('siswa/(:num)/edit', 'Admin\AdminSiswa::edit/$1');
+	$routes->get('siswa/(:num)/delete', 'Admin\AdminSiswa::delete/$1');
+});
+
+$routes->resource('datasiswa');
 
 /*
  * --------------------------------------------------------------------
